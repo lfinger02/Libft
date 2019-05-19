@@ -6,7 +6,7 @@
 /*   By: lfinger <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/18 14:44:53 by lfinger           #+#    #+#             */
-/*   Updated: 2019/05/18 15:06:28 by lfinger          ###   ########.fr       */
+/*   Updated: 2019/05/19 11:54:27 by lfinger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,6 @@
 #include <unistd.h>
 
 void	ft_putchar(char c);
+int		ft_strlen(char *str);
 
 #endif

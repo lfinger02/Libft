@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfinger <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/18 15:05:06 by lfinger           #+#    #+#             */
-/*   Updated: 2019/05/19 11:59:37 by lfinger          ###   ########.fr       */
+/*   Created: 2019/05/19 11:47:50 by lfinger           #+#    #+#             */
+/*   Updated: 2019/05/19 11:58:02 by lfinger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdio.h>
+#include	"libft.h"
 
-int		main()
+int		ft_strlen(char *str)
 {
-	char *c = "Hello";
+	int i;
 
-	printf("%d",ft_strlen(c));
-	return(0);
+	i = 0;
+	while (str[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
 }
