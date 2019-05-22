@@ -1,38 +1,50 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: lfinger <marvin@42.fr>                     +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/05/18 13:34:32 by lfinger           #+#    #+#              #
-#    Updated: 2019/05/18 14:21:54 by lfinger          ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+TweenMax.to(".logo", 1, {
+	width: "140",
+	transform: "rotate(0deg)",
+	onComplete: secondAnimation,
+});
 
-NAME = libft.a
+function secondAnimation() {
+	TweenMax.to("input.user-input.1", 0.2, {
+		display: "block",
+		width: "100%",
+		backgroundColor: "#ffffff",
+		boxShadow: "1px 1px 5px #00000036",
+		onComplete: thirdAnimation,
+	});
+}
 
-FLAGS = -c -Wall -Werror -Wextra
+function thirdAnimation() {
+	TweenMax.to("input.user-input.2", 0.2, {
+		display: "block",
+		backgroundColor: "#ffffff",
+		width: "100%",
+		boxShadow: "1px 1px 5px #00000036",
+		onComplete: FourthAnimation,
+	});
+}
 
-LINKER = ar rc
+function FourthAnimation() {
+	TweenMax.to("button.user-input", 0.5, {
+		display: "inline",
+		width: "27%",
+		//onComplete:FiveAnimation,
+	});
+	TweenMax.to(".fixed-animation-line", 0.1, {
+		width: "100%",
+		display: "inline",
+		width: "100%",
+		onComplete: lastAnimation,
+	});
+	TweenMax.to(".fixed-title", 0.2, {
+		fontSize: "13",
+		display: "flex",
+		//onComplete:lastAnimation,
+	});
+}
 
-SRC = $(shell ls | grep -E "ft_.+\.c")
-
-OBJ_NAME = $(SRC:%.c=%.o)
-
-all: $(NAME)
-
-$(NAME):
-	gcc $(FLAGS) $(SRC)
-	$(LINKER) $(NAME) $(OBJ_NAME)
-	ranlib $(NAME)
-
-clean:
-	/bin/rm -f $(OBJ_NAME)
-
-fclean: clean
-	/bin/rm -f $(NAME)
-
-re: fclean all
-
-.PHONY: clean fclean all re
+function lastAnimation() {
+	TweenMax.to(".fixed-animation-line", 0.1, {
+		backgroundColor: "rgba(255, 255, 255, 0)",
+	});
+}
