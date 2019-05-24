@@ -1,30 +1,28 @@
-*str/* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchar.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfinger <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/20 11:05:39 by lfinger           #+#    #+#             */
-/*   Updated: 2019/05/20 11:23:55 by lfinger          ###   ########.fr       */
+/*   Created: 2019/05/24 11:21:56 by lfinger           #+#    #+#             */
+/*   Updated: 2019/05/24 11:24:03 by lfinger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchar(const void *str, int c, size_t n)
+char	*ft_strdup(const char *src)
 {
-	if (n != 0)
-	{
-		const unsigned char *p = str;
+	size_t len;
+	char *dst;
 
-		while (n-- != 0)
-		{
-			if (*p == c)
-			{
-				return ((void *)(p - 1));
-			}
-		}
+	len = ft_strlen(src) + 1;
+	dst = malloc(len);
+	if (dst == NULL)
+	{
+		return (NULL);
 	}
-	return (NULL);
+	ft_memcpy(dst, src, len);
+	return (dst);
 }

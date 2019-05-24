@@ -1,30 +1,27 @@
-*str/* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchar.c                                       :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfinger <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/20 11:05:39 by lfinger           #+#    #+#             */
-/*   Updated: 2019/05/20 11:23:55 by lfinger          ###   ########.fr       */
+/*   Created: 2019/05/24 11:31:49 by lfinger           #+#    #+#             */
+/*   Updated: 2019/05/24 11:33:22 by lfinger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchar(const void *str, int c, size_t n)
+char	*ft_strcpy(char *dest, const char *src)
 {
-	if (n != 0)
-	{
-		const unsigned char *p = str;
+	int i;
 
-		while (n-- != 0)
-		{
-			if (*p == c)
-			{
-				return ((void *)(p - 1));
-			}
-		}
+	i = 0;
+	while (src[i] != '\0')
+	{
+		dest[i] = src[i];
+		i++;
 	}
-	return (NULL);
+	dest[i] = '\0';
+	return (dest);
 }

@@ -1,30 +1,29 @@
-*str/* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchar.c                                       :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfinger <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/20 11:05:39 by lfinger           #+#    #+#             */
-/*   Updated: 2019/05/20 11:23:55 by lfinger          ###   ########.fr       */
+/*   Created: 2019/05/24 09:48:42 by lfinger           #+#    #+#             */
+/*   Updated: 2019/05/24 10:10:05 by lfinger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchar(const void *str, int c, size_t n)
+int		ft_memcmp(const void *str1, const void *str2, size_t n)
 {
-	if (n != 0)
-	{
-		const unsigned char *p = str;
 
-		while (n-- != 0)
+	while (n > 0)
+	{
+		if (str1 != str2)
 		{
-			if (*p == c)
-			{
-				return ((void *)(p - 1));
-			}
+			return (str1 - str2);
 		}
+		n--;
+		str1++;
+		str2++;
 	}
-	return (NULL);
+	return (0);
 }

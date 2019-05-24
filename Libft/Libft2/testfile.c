@@ -1,30 +1,22 @@
-*str/* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchar.c                                       :+:      :+:    :+:   */
+/*   testfile.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfinger <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/20 11:05:39 by lfinger           #+#    #+#             */
-/*   Updated: 2019/05/20 11:23:55 by lfinger          ###   ########.fr       */
+/*   Created: 2019/05/24 10:06:06 by lfinger           #+#    #+#             */
+/*   Updated: 2019/05/24 11:17:10 by lfinger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
-void	*ft_memchar(const void *str, int c, size_t n)
-{
-	if (n != 0)
-	{
-		const unsigned char *p = str;
+int main () {
+   char str1[] = "Hello";;
 
-		while (n-- != 0)
-		{
-			if (*p == c)
-			{
-				return ((void *)(p - 1));
-			}
-		}
-	}
-	return (NULL);
+   printf("%ld", ft_strlen(str1));
+   
+   return(0);
 }
