@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfinger <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/24 10:19:34 by lfinger           #+#    #+#             */
-/*   Updated: 2019/05/24 10:31:49 by lfinger          ###   ########.fr       */
+/*   Created: 2019/05/24 11:55:59 by lfinger           #+#    #+#             */
+/*   Updated: 2019/05/27 11:24:26 by lfinger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *str)
+char	*ft_strcat(char *dest, const char *src)
 {
-	size_t i;
-	
-	i = 0;
-	while (str[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
+	ft_strcpy(&dest[ft_strlen(dest)], src);
+	return (dest);
 }

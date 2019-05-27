@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfinger <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/23 12:12:04 by lfinger           #+#    #+#             */
-/*   Updated: 2019/05/23 12:15:17 by lfinger          ###   ########.fr       */
+/*   Created: 2019/05/24 09:48:42 by lfinger           #+#    #+#             */
+/*   Updated: 2019/05/27 11:20:31 by lfinger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memcpy(void *str1, const void *str2, size_t n)
+int		ft_memcmp(const void *str1, const void *str2, size_t n)
 {
-	size_t i;
-	char *ptr;
-	char *ptr2;
+	unsigned const char *t;
+	unsigned const char *d;
+	size_t				i;
 
-	ptr = str1;
-	ptr2 = (char *)str2;
+	t = str1;
+	d = str2;
 	i = 0;
 	while (i < n)
 	{
+		if (t[i] != d[i])
+			return (t[i] - d[i]);
 		i++;
-		ptr[i] = ptr2[i];
 	}
-	return (str1);
+	return (0);
 }

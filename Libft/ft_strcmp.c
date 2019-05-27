@@ -1,36 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfinger <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/23 13:25:59 by lfinger           #+#    #+#             */
-/*   Updated: 2019/05/23 15:52:44 by lfinger          ###   ########.fr       */
+/*   Created: 2019/05/27 13:35:57 by lfinger           #+#    #+#             */
+/*   Updated: 2019/05/27 13:45:44 by lfinger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+int		ft_strcmp(const char *str1, const char *str2)
 {
-	unsigned char *use_dest;
-	unsigned char *use_src;
+	int i;
+	i = 0;
 
-	if (dest < src)
+	while (str1[i] == str2[i] && str1[i] && str2[i])
 	{
-		ft_memcpy(dest, src, n);
+		i++;
 	}
-	else
-	{
-		use_dest = (unsigned char *)dest;
-		use_src = (unsigned char *)src;
-		use_dest += n;
-		use_src += n;
-		while (n--)
-		{
-			*(--use_dest) = *(--use_src);
-		}
-	}
-	return (dest);
+	return ((unsigned char)str1[i] - (unsigned char)str2[i]);
 }
