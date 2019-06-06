@@ -6,16 +6,15 @@
 /*   By: lfinger <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/23 11:42:33 by lfinger           #+#    #+#             */
-/*   Updated: 2019/06/01 10:35:08 by lfinger          ###   ########.fr       */
+/*   Updated: 2019/06/06 13:18:25 by lfinger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <string.h>
-#include <stdlib.h>
-
 #ifndef LIBFT_H
 # define LIBFT_H
+# include <unistd.h>
+# include <string.h>
+# include <stdlib.h>
 
 void	*ft_memset(void *b, int c, size_t len);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
