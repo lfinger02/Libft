@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfinger <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/01 10:15:11 by lfinger           #+#    #+#             */
-/*   Updated: 2019/06/01 10:30:50 by lfinger          ###   ########.fr       */
+/*   Created: 2019/05/24 09:48:42 by lfinger           #+#    #+#             */
+/*   Updated: 2019/06/08 10:26:44 by lfinger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	const char	*sc;
-	size_t		i;
+	unsigned const char *to_compare1;
+	unsigned const char *to_compare2;
+	size_t				i;
 
-	sc = (const char *)s;
-	i = -1;
-	while (++i < n)
-		if (*(sc + i) == (char)c)
-			return ((void *)sc + i);
-	return (NULL);
+	to_compare1 = s1;
+	to_compare2 = s2;
+	i = 0;
+	while (i < n)
+	{
+		if (to_compare1[i] != to_compare2[i])
+		{
+			return (to_compare1[i] - to_compare2[i]);
+		}
+		i++;
+	}
+	return (0);
 }

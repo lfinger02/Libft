@@ -1,23 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfinger <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/01 10:18:21 by lfinger           #+#    #+#             */
-/*   Updated: 2019/06/01 10:18:33 by lfinger          ###   ########.fr       */
+/*   Created: 2019/05/29 10:53:49 by lfinger           #+#    #+#             */
+/*   Updated: 2019/06/08 09:45:02 by lfinger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *str)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	int	count;
+	char	*to_move;
+	char	*move_to;
+	size_t	i;
 
-	count = 0;
-	while (str[count])
-		count++;
-	return (count);
+	i = 0;
+	to_move = (char *)src;
+	move_to = (char *)dst;
+	if (to_move == move_to)
+		return ((char *)to_move);
+	if (to_move < move_to)
+		while ((int)(--len) >= 0)
+			move_to[len] = to_move[len];
+	else
+		while (i < len)
+		{
+			move_to[i] = to_move[i];
+			i++;
+		}
+	return (dst);
 }

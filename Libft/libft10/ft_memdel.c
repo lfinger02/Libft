@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_memdal.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfinger <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/24 11:55:59 by lfinger           #+#    #+#             */
-/*   Updated: 2019/05/27 11:24:26 by lfinger          ###   ########.fr       */
+/*   Created: 2019/06/01 08:37:59 by lfinger           #+#    #+#             */
+/*   Updated: 2019/06/07 15:37:12 by lfinger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcat(char *dest, const char *src)
+void	ft_memdel(void **ap)
 {
-	ft_strcpy(&dest[ft_strlen(dest)], src);
-	return (dest);
+	free(*ap);
+	*ap = (NULL);
 }
