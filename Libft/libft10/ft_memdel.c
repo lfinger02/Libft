@@ -6,7 +6,7 @@
 /*   By: lfinger <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/01 08:37:59 by lfinger           #+#    #+#             */
-/*   Updated: 2019/06/07 15:37:12 by lfinger          ###   ########.fr       */
+/*   Updated: 2019/06/10 10:14:41 by lfinger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	ft_memdel(void **ap)
 {
-	free(*ap);
-	*ap = (NULL);
+	if (ap != NULL && *ap != NULL)
+	{
+		free(*ap);
+		*ap = NULL;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: lfinger <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/01 09:10:21 by lfinger           #+#    #+#             */
-/*   Updated: 2019/06/01 09:10:36 by lfinger          ###   ########.fr       */
+/*   Updated: 2019/06/10 12:10:39 by lfinger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,23 @@
 
 char	*ft_strmap(char const *s, char (*f)(char))
 {
-	char	*new_str;
+	char	*fresh_new_str;
 	int		i;
 
-	if (!s)
+	if (s == 0)
+	{
 		return (NULL);
-	new_str = ft_strnew(ft_strlen(s));
-	if (!new_str)
+	}
+	fresh_new_str = ft_strnew(ft_strlen(s));
+	if (fresh_new_str == 0)
+	{
 		return (NULL);
-	i = -1;
-	while (*(s + ++i))
-		*(new_str + i) = f(*(s + i));
-	return (new_str);
+	}
+	i = 0;
+	while (s[i] != '\0')
+	{
+		fresh_new_str[i] = f(s[i]);
+		i++;
+	}
+	return (fresh_new_str);
 }

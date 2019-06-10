@@ -5,70 +5,91 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lfinger <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/06/01 09:41:12 by lfinger           #+#    #+#             */
-/*   Updated: 2019/06/01 09:41:28 by lfinger          ###   ########.fr       */
+/*   Created: 2019/06/10 13:01:46 by lfinger           #+#    #+#             */
+/*   Updated: 2019/06/10 14:11:54 by lfinger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	get_nb_words(char const *s, char c)
+static void		cpy(char *dest, char *src, size_t n)
 {
-	size_t	i;
-	int		nb_words;
-	int		new_word;
+	size_t		i;
 
 	i = 0;
-	nb_words = 0;
-	new_word = 1;
-	while (s[i])
+	while (i < n)
 	{
-		if (new_word && s[i] != c)
-		{
-			nb_words++;
-			new_word = 0;
-		}
-		if (s[i] == c)
-			new_word = 1;
+		dest[i] = src[i];
 		i++;
 	}
-	return (nb_words);
+	dest[i] = '\0';
 }
 
-static char	*get_next_word(char const *s, char c, size_t *start)
+static size_t	count_words(const char *str, char c)
 {
-	size_t	l1;
+	size_t		i;
+	size_t		words;
 
-	while (s[*start] == c)
-		*start += 1;
-	l1 = *start;
-	while (s[*start])
+	i = 0;
+	words = 0;
+	while (str[i] != '\0')
 	{
-		if (s[*start] == c)
+		while (str[i] == c)
+			i++;
+		if (str[i] == '\0')
 			break ;
-		*start += 1;
+		words++;
+		while (str[i] != '\0' && str[i] != c)
+			i++;
 	}
-	return (ft_strsub(s, l1, *start - l1));
+	return (words);
 }
 
-char		**ft_strsplit(char const *s, char c)
+static size_t	cut_words(const char *str, size_t words, char **r, char c)
 {
-	int		nb_words;
-	char	**split;
-	size_t	i;
-	size_t	start;
+	size_t		w;
+	size_t		start;
+	size_t		end;
 
-	nb_words = get_nb_words(s, c);
-	split = (char**)malloc(sizeof(char*) * (nb_words + 1));
-	if (split == NULL)
-		return (NULL);
-	i = 0;
+	w = 0;
 	start = 0;
-	while (nb_words--)
+	while (w < words && str[start] != '\0')
 	{
-		split[i] = get_next_word(s, c, &start);
-		i++;
+		while (str[start] == c)
+			start++;
+		end = start;
+		while (str[end] != '\0' && str[end] != c)
+			end++;
+		if ((r[w] = malloc(end - start + 1)) == '\0')
+			return (0);
+		cpy(r[w], (char *)str + start, end - start);
+		start = end + 1;
+		w++;
 	}
-	split[i] = NULL;
-	return (split);
+	return (1);
+}
+
+char			**ft_strsplit(char const *str, char c)
+{
+	size_t		words;
+	char		**r;
+
+	if (str == 0)
+	{
+		return (NULL);
+	}
+	words = count_words(str, c);
+	if (words == 0)
+	{
+		if ((r = malloc(sizeof(*r))) == 0)
+			return (NULL);
+		r[0] = NULL;
+		return (r);
+	}
+	if ((r = malloc((words + 1) * sizeof(*r))) == 0)
+		return (NULL);
+	if (cut_words(str, words, r, c) == 0)
+		return (NULL);
+	r[words] = 0;
+	return (r);
 }
